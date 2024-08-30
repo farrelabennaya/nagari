@@ -2,12 +2,10 @@
 import { ref, reactive } from "vue";
 import { useAuthStore } from "@/stores/auth";
 
-
 definePageMeta({
   middleware: ["auth", "role"],
   colorMode: "light",
 });
-
 
 const auth = useAuthStore();
 const router = useRouter();
@@ -35,7 +33,7 @@ const validatePassword = () => {
   if (form.password.length < 8) {
     errors.value.password = "Password minimal 8 karakter";
   } else {
-    delete errors.value.password;  // Clear the error when password is valid
+    delete errors.value.password; // Clear the error when password is valid
   }
 };
 
@@ -68,7 +66,7 @@ const handleSubmit = async () => {
   try {
     // Simulate API call to create user
     await auth.createuser(form);
-    
+
     // Success notification
     showNotification("User created successfully!");
 
@@ -77,7 +75,7 @@ const handleSubmit = async () => {
     form.username = "";
     form.password = "";
     form.role_id = "";
-    errors.value = {};  // Clear errors after successful submission
+    errors.value = {}; // Clear errors after successful submission
 
     // Redirect to another page (example)
     setTimeout(() => {
@@ -91,9 +89,9 @@ const handleSubmit = async () => {
       // Loop through each error and only store the first message
       Object.keys(errorData).forEach((key) => {
         if (Array.isArray(errorData[key])) {
-          errors.value[key] = errorData[key][0];  // Store only the first error message
+          errors.value[key] = errorData[key][0]; // Store only the first error message
         } else {
-          errors.value[key] = errorData[key];  // Store as is if not an array
+          errors.value[key] = errorData[key]; // Store as is if not an array
         }
       });
     } else {
@@ -118,7 +116,6 @@ const showNotification = (message) => {
 };
 </script>
 
-
 <template>
   <div>
     <AppHeader />
@@ -128,17 +125,17 @@ const showNotification = (message) => {
         id="main-content"
         class="h-full w-full bg-gray-50 relative overflow-y-auto sm:ml-64"
       >
-      <div class="custom-header to-gray-100 p-6 pb-32 pt-5">
-        <main>
-          <div
+        <div class="custom-header to-gray-100 p-6 pb-32 pt-5">
+          <main>
+            <div
               class="bg-white rounded-lg shadow-sm p-6 flex justify-between items-center relative overflow-x-auto ml-5 mr-5 mt-5 mb-5"
-             >
+            >
               <div>
                 <h2 class="text-xl font-bold text-gray-800">Tambah User</h2>
                 <p class="text-gray-500">Tambah Data User</p>
               </div>
             </div>
-        </main>
+          </main>
         </div>
         <div class="min-h-screen flex">
           <div class="w-full">
@@ -158,7 +155,9 @@ const showNotification = (message) => {
                     v-model="form.name"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                   />
-                  <span v-if="errors.name" class="text-red-500">{{ errors.name }}</span>
+                  <span v-if="errors.name" class="text-red-500">{{
+                    errors.name
+                  }}</span>
                 </div>
 
                 <!-- Username Field -->
@@ -171,7 +170,9 @@ const showNotification = (message) => {
                     v-model="form.username"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                   />
-                  <span v-if="errors.username" class="text-red-500">{{ errors.username }}</span>
+                  <span v-if="errors.username" class="text-red-500">{{
+                    errors.username
+                  }}</span>
                 </div>
 
                 <!-- Password Field -->
@@ -186,7 +187,9 @@ const showNotification = (message) => {
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                   />
                   <!-- Display password error message -->
-                  <span v-if="errors.password" class="text-red-500">{{ errors.password }}</span>
+                  <span v-if="errors.password" class="text-red-500">{{
+                    errors.password
+                  }}</span>
                 </div>
 
                 <!-- Role Field -->
@@ -197,15 +200,26 @@ const showNotification = (message) => {
                     v-model="form.role_id"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                   >
-                    <option v-for="role in roles" :value="role.id" :key="role.id">
+                    <option
+                      v-for="role in roles"
+                      :value="role.id"
+                      :key="role.id"
+                    >
                       {{ role.name }}
                     </option>
                   </select>
-                  <span v-if="errors.role_id" class="text-red-500">{{ errors.role_id }}</span>
+                  <span v-if="errors.role_id" class="text-red-500">{{
+                    errors.role_id
+                  }}</span>
                 </div>
 
                 <!-- Submit Button -->
-                <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-1 mb-2">Add User</button>
+                <button
+                  type="submit"
+                  class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-1 mb-2"
+                >
+                  Add User
+                </button>
               </form>
             </div>
           </div>
@@ -214,23 +228,49 @@ const showNotification = (message) => {
     </div>
 
     <!-- Notification -->
-    <div v-if="notification.show" id="toast-success" class="fixed bottom-4 right-4 w-full max-w-xs p-4 mb-4 text-gray-500 bg-white rounded-lg shadow">
-      <div class="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-green-500 bg-green-100 rounded-lg">
-        <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-          <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 1 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 1 1 1.414 1.414Z" />
+    <div
+      v-if="notification.show"
+      id="toast-success"
+      class="fixed bottom-4 right-4 w-full max-w-xs p-4 mb-4 text-gray-500 bg-white rounded-lg shadow"
+    >
+      <div
+        class="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-green-500 bg-green-100 rounded-lg"
+      >
+        <svg
+          class="w-5 h-5"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="currentColor"
+          viewBox="0 0 20 20"
+        >
+          <path
+            d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 1 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 1 1 1.414 1.414Z"
+          />
         </svg>
       </div>
       <div class="ml-3 text-sm font-normal">{{ notification.message }}</div>
-      <button @click="notification.show = false" class="ml-auto bg-white text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5">
+      <button
+        @click="notification.show = false"
+        class="ml-auto bg-white text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5"
+      >
         <span class="sr-only">Close</span>
-        <svg class="w-3 h-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
-          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1l6 6m0 0l6 6M7 7L1 1m6 6l6-6" />
+        <svg
+          class="w-3 h-3"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 14 14"
+        >
+          <path
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M1 1l6 6m0 0l6 6M7 7L1 1m6 6l6-6"
+          />
         </svg>
       </button>
     </div>
   </div>
 </template>
-
 
 <style scoped>
 .custom-bg-main {

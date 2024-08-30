@@ -328,37 +328,37 @@ export default {
 
     // Fetch Keluarga Detail
     const fetchKeluargaDetail = async () => {
-      const urlParams = new URLSearchParams(window.location.search);
-      const id = urlParams.get("id");
+  const urlParams = new URLSearchParams(window.location.search);
+  const id = urlParams.get("id");
 
-      try {
-        const response = await fetch(
-          `https://www.demo-ta.my.id/api/keluargas/${id}`
-        );
-        const data = await response.json();
-        keluargaDetail.value = data;
-        kartuKeluarga.value = data.kartu_keluarga || []; // Tambahkan pengecekan jika tidak ada kartu keluarga
-        await fetchAnggotaKeluarga(data.id);
-      } catch (error) {
-        console.error("Error fetching keluarga detail:", error);
-      }
-    };
+  try {
+    const response = await fetch(`https://www.demo-ta.my.id/api/keluargas/${id}`, {
+      cache: "no-store",
+    });
+    const data = await response.json();
+    keluargaDetail.value = data;
+    kartuKeluarga.value = data.kartu_keluarga || [];
+    await fetchAnggotaKeluarga(data.id);
+  } catch (error) {
+    console.error("Error fetching keluarga detail:", error);
+  }
+};
+
 
     // Fetch Anggota Keluarga
     const fetchAnggotaKeluarga = async (keluargaId) => {
-      try {
-        const response = await fetch(
-          `https://www.demo-ta.my.id/api/anggota_keluargas`
-        );
-        const data = await response.json();
-        anggotaKeluarga.value = data.filter(
-          (anggota) => anggota.keluarga_id === keluargaId
-        );
-      } catch (error) {
-        console.error("Error fetching anggota keluarga:", error);
-        console.log("Data fetched:", anggotaKeluarga.value);
-      }
-    };
+  try {
+    const response = await fetch(`https://www.demo-ta.my.id/api/anggota_keluargas`);
+    const data = await response.json();
+
+    console.log("Data anggota keluarga fetched:", data);
+
+    anggotaKeluarga.value = data.filter(anggota => anggota.keluarga_id === keluargaId);
+  } catch (error) {
+    console.error("Error fetching anggota keluarga:", error);
+  }
+};
+
 
     const editAnggota = (anggota) => {
       router.push({
