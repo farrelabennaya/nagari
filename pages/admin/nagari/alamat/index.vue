@@ -52,28 +52,40 @@
       <SidebarAdmin />
       <div
         id="main-content"
-        class="h-full w-full bg-gray-50 relative overflow-y-auto sm:ml-64"
+        class="min-h-screen h-full w-full bg-gray-50 relative overflow-y-auto sm:ml-64"
       >
-        <main>
-          <div class="pt-6 px-4 ml-5 mr-5">
-            <h1 class="text-lg font-bold mb-4">Data Alamat</h1>
-            <!-- <tr>
-              <td>
-                <NuxtLink to="/admin/nagari/alamat/create">
-                  <button
-                    type="button"
-                    class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+      <div class="custom-header to-gray-100 p-6 pb-32 pt-5">
+          <main>
+            <!-- <div class="pt-6 px-4 ml-5 mr-5">
+              <h1 class="text-lg font-bold mb-4">Data Jorong</h1>
+              <tr>
+                <td>
+                  <NuxtLink to="/admin/nagari/jorong/create">
+                    <button
+                      type="button"
+                      class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+                    >
+                      Add Jorong +
+                    </button></NuxtLink
                   >
-                    Add Alamat +
-                  </button></NuxtLink
-                >
-              </td>
-            </tr> -->
-            <slot />
-          </div>
-        </main>
+                </td>
+              </tr>
+              <slot />
+            </div> -->
+            <div
+              class="bg-white rounded-lg shadow-sm p-6 flex justify-between items-center relative overflow-x-auto ml-5 mr-5 mt-5 mb-5"
+            >
+              <div>
+                <h2 class="text-xl font-bold text-gray-800">Alamat</h2>
+                <p class="text-gray-500">Kelola Alamat</p>
+              </div>
+             
+            </div>
+          </main>
+        </div>
 
-        <div class="relative overflow-x-auto ml-5 mr-5">
+        <div class="relative overflow-x-auto ml-5 mr-5 -mt-20 p-6 pb-32 pt-5">
+          <div class="overflow-x-auto bg-white shadow-md rounded-lg">
           <table
             class="w-full text-sm text-left text-gray-500 rtl:text-right dark:text-gray-400"
           >
@@ -153,6 +165,7 @@
               </tr>
             </tbody>
           </table>
+          </div>
         </div>
 
         <!-- Edit Modal -->
@@ -305,7 +318,7 @@
             </div>
           </div>
         </div>
-        <FooterAdmin />
+      
 
       </div>
     </div>
@@ -505,7 +518,11 @@ export default {
 </script>
 
 <style scoped>
-.custom-bg-body {
-  background-color: #FFDD95; 
-}
-</style>
+  .custom-bg-main {
+    background-color: #f9fafb;
+  }
+  
+  .custom-header {
+    background: linear-gradient(to right, #adc4ce, #e0ebf0);
+  }
+  </style>
