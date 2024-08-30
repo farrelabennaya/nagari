@@ -232,7 +232,7 @@ export default {
           </div> -->
             <div
               class="bg-white rounded-lg shadow-sm p-6 flex justify-between items-center relative overflow-x-auto ml-5 mr-5 mt-5 mb-5"
-            >
+             >
               <div>
                 <h2 class="text-xl font-bold text-gray-800">Users</h2>
                 <p class="text-gray-500">Kelola User</p>
@@ -349,6 +349,7 @@ export default {
               </div>
             </form>
           </div>
+          <div class="overflow-x-auto bg-white shadow-md rounded-lg">
           <table
             class="w-full text-sm text-left text-gray-500 rtl:text-right dark:text-gray-400"
           >
@@ -465,6 +466,7 @@ export default {
               </tr>
             </tbody>
           </table>
+          </div>
           <!-- Pagination -->
            <div class="flex flex-col lg:flex-row justify-between mt-4">
             <div

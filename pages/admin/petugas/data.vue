@@ -181,9 +181,10 @@
               </div>
             </form>
           </div>
+          <div class="overflow-x-auto bg-white shadow-md rounded-lg">
           <table
             class="w-full text-sm text-left text-gray-500 rtl:text-right dark:text-gray-400"
-          >
+           >
             <thead
               class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
             >
@@ -311,6 +312,7 @@
               </tr>
             </tbody>
           </table>
+          </div>
           <!-- Pagination -->
            <div class="flex flex-col lg:flex-row justify-between mt-4">
             <div

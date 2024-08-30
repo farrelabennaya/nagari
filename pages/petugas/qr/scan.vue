@@ -2,7 +2,7 @@
   <div>
     <AppHeader />
     <div class="flex overflow-hidden bg-white pt-16">
-      <SidebarAdmin />
+      <SidebarPetugas />
       <div
         id="main-content"
         class="h-full w-full bg-gray-50 relative overflow-y-auto sm:ml-64 p-8"

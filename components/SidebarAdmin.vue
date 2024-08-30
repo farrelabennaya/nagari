@@ -1,14 +1,14 @@
 <script setup lang="ts">
 import { ref, onMounted, watch } from "vue";
 import { useRoute } from "vue-router";
-import { useFlowbite } from '~/composables/useFlowbite';
+import { useFlowbite } from "~/composables/useFlowbite";
 
 // initialize components based on data attribute selectors
 onMounted(() => {
-    useFlowbite(() => {
-        initFlowbite();
-    })
-})
+  useFlowbite(() => {
+    initFlowbite();
+  });
+});
 
 const userDropdownOpen = ref(false);
 const nagariDropdownOpen = ref(false);
@@ -55,12 +55,12 @@ onMounted(() => {
   }
   updateActiveMenu();
 
-// Menghapus status dropdown dari localStorage saat halaman di-refresh
-window.addEventListener("beforeunload", () => {
-  localStorage.removeItem("userDropdownOpen");
-  localStorage.removeItem("nagariDropdownOpen");
-  localStorage.removeItem("pendudukDropdownOpen");
-});
+  // Menghapus status dropdown dari localStorage saat halaman di-refresh
+  window.addEventListener("beforeunload", () => {
+    localStorage.removeItem("userDropdownOpen");
+    localStorage.removeItem("nagariDropdownOpen");
+    localStorage.removeItem("pendudukDropdownOpen");
+  });
 });
 
 watch(route, () => {
@@ -83,7 +83,11 @@ watch(route, () => {
       stroke="currentColor"
       stroke-width="2"
     >
-      <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16m-7 6h7" />
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="M4 6h16M4 12h16m-7 6h7"
+      />
     </svg>
   </button>
 
@@ -317,7 +321,7 @@ watch(route, () => {
             id="dropdown-example3"
             class="py-2 space-y-2"
           >
-          <li>
+            <li>
               <NuxtLink
                 to="/admin/nagari/keluarga"
                 class="flex items-center w-full p-2 text-gray-900 font-normal transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
@@ -341,20 +345,19 @@ watch(route, () => {
             </li>
             <li>
               <NuxtLink
-                to="/admin/maps/penduduklist"
+                to="/admin/maps/penduduklist2"
                 class="flex items-center w-full p-2 text-gray-900 font-normal transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
                 :class="{
-                  'bg-gray-200': activeMenu === '/admin/maps/penduduklist',
+                  'bg-gray-200': activeMenu === '/admin/maps/penduduklist2',
                 }"
                 @click="sidebarOpen = false"
                 >Lokasi Penduduk</NuxtLink
               >
             </li>
-            
           </ul>
         </li>
 
-        <li>
+        <!-- <li>
           <NuxtLink
             to="/admin/qr/create"
             class="text-base text-gray-900 font-normal rounded-lg hover:bg-gray-100 flex items-center p-2 group"
@@ -377,7 +380,7 @@ watch(route, () => {
             </svg>
             <span class="ml-3 flex-1 whitespace-nowrap">QR Code</span>
           </NuxtLink>
-        </li>
+        </li> -->
 
         <li>
           <NuxtLink
@@ -389,16 +392,19 @@ watch(route, () => {
             @click="sidebarOpen = false"
           >
             <svg
-              class="w-6 h-6 text-gray-500 flex-shrink-0 group-hover:text-gray-900 transition duration-75"
-              fill="currentColor"
-              viewBox="0 0 20 20"
+              class="w-6 h-6 text-gray-800 dark:text-white"
+              aria-hidden="true"
               xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              fill="currentColor"
+              viewBox="0 0 24 24"
             >
               <path
                 fill-rule="evenodd"
-                d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+                d="M7.5 4.586A2 2 0 0 1 8.914 4h6.172a2 2 0 0 1 1.414.586L17.914 6H19a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h1.086L7.5 4.586ZM10 12a2 2 0 1 1 4 0 2 2 0 0 1-4 0Zm2-4a4 4 0 1 0 0 8 4 4 0 0 0 0-8Z"
                 clip-rule="evenodd"
-              ></path>
+              />
             </svg>
             <span class="ml-3 flex-1 whitespace-nowrap">Scanner</span>
           </NuxtLink>
@@ -414,18 +420,22 @@ watch(route, () => {
             @click="sidebarOpen = false"
           >
             <svg
-              class="w-6 h-6 text-gray-500 flex-shrink-0 group-hover:text-gray-900 transition duration-75"
-              fill="currentColor"
-              viewBox="0 0 20 20"
+              class="w-6 h-6 text-gray-800 dark:text-white"
+              aria-hidden="true"
               xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              fill="currentColor"
+              viewBox="0 0 24 24"
             >
               <path
                 fill-rule="evenodd"
-                d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+                d="M5 9a7 7 0 1 1 8 6.93V21a1 1 0 1 1-2 0v-5.07A7.001 7.001 0 0 1 5 9Zm5.94-1.06A1.5 1.5 0 0 1 12 7.5a1 1 0 1 0 0-2A3.5 3.5 0 0 0 8.5 9a1 1 0 0 0 2 0c0-.398.158-.78.44-1.06Z"
                 clip-rule="evenodd"
-              ></path>
+              />
             </svg>
-            <span class="ml-3 flex-1 whitespace-nowrap">Map</span>
+
+            <span class="ml-3 flex-1 whitespace-nowrap">Maps</span>
           </NuxtLink>
         </li>
 
